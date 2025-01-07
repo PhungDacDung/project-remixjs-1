@@ -4,16 +4,16 @@ import Navbar from "~/components/Navbar";
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { name: "description", content: "Welcome to Remix!" },  
   ];
 };
 
 export default function Index() {
   return (
     <>
-    <Navbar/>
-      Home
-    
+    <div className="h-screen">
+       <p>Home. Welcome </p> 
+    </div>
     </>
   );
 }

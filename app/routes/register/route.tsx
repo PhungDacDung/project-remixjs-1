@@ -15,16 +15,37 @@ export default function Register() {
     const navigate = useNavigate()
 
 
+
+
+
     const handleRegister = ()=>{
 
         if(password !== "" && confirmPassword !== "" && password === confirmPassword){
+            console.log("check",password);
+            
+
+            var bcrypt = require('bcryptjs');
+            var hashedPassword;
+
+            bcrypt.genSalt(10, function(err:any, Salt:number){
+                bcrypt.hash(password,Salt,function(err:any,hash:string){
+                    if (err) {
+                        return console.log('Cannot encrypt');
+                    }
+            
+                    hashedPassword = hash;
+                    console.log(hash);
+                });
+            });
+
+                      
 
             const formData = new FormData();
             formData.append("name",name)
             formData.append("email",email)
-            formData.append("password",password)
+            formData.append("hashedPassword",password)
             
-            fetcher.submit(formData,{method:'POST'});
+            //fetcher.submit(formData,{method:'POST'});
 
         }
         else{
